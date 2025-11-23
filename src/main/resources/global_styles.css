@@ -1,0 +1,10 @@
+.btn-join {
+  -fx-background-color: #4bb9d8;
+  -fx-text-fill: black;
+  -fx-pref-width: 200px;
+  -fx-background-radius: 8px;
+}
+
+.button:hover {
+  -fx-opacity: 0.9;
+}

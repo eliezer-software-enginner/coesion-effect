@@ -1,0 +1,11 @@
+sources.txt
+/build
+/bin
+/java_fx_modules
+installer
+/target
+/dist
+*.log
+app_base/app.txt
+*.db
+draft.txt

@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "App[Windows]",
+      "request": "launch",
+      "mainClass": "my_app.App",
+      "vmArgs": "--module-path ./java_fx_modules/windows-25.0.1/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.web -Dprism.verbose=true --enable-native-access=javafx.graphics"
+    }
+  ]
+}
