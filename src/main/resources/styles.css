@@ -1,0 +1,34 @@
+.button {
+  -fx-background-color: #4bb9d8;
+  -fx-text-fill: black;
+  -fx-pref-width: 200px;
+  -fx-background-radius: 8px;
+  -fx-padding: 10 15;
+}
+
+.button:hover {
+  -fx-opacity: 0.9;
+}
+
+.bg{
+     -fx-background-image: url(assets/2.jpeg);
+     -fx-background-size: cover; -fx-background-position: center;
+}
+
+.content{
+    -fx-spacing: 10px;
+    -fx-alignment: top-center;
+}
+
+.text{
+    -fx-font-size:21px;
+    -fx-text-fill:white;
+    -fx-fill:white;
+}
+
+.title{
+    -fx-font-size:35px;
+    -fx-font-weight:bold;
+}
+
+

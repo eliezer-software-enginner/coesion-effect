@@ -11,6 +11,6 @@ import java.lang.annotation.Target;
  * or provide additional behavior.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.TYPE, ElementType.METHOD })
+@Target({ElementType.FIELD, ElementType.TYPE, ElementType.METHOD })
 public @interface Component {
 }

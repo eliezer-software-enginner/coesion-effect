@@ -1,48 +1,48 @@
 package my_app;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import my_app.screens.HomeScreen;
+import plantfall.CoesionApp;
+import plantfall.HotReload;
 
-import java.io.File;
-import java.lang.reflect.Method;
-import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
-@CoesionApp
+@CoesionApp(stylesheets = {"/styles.css"}, mainViewClass = HomeScreen.class)
 public class App extends Application {
-
-    public static App INSTANCE;
-    public static Stage MAIN_STAGE;
 
     public static StackPane ROOT = new StackPane();
 
-    // opcional: armazena o reloader pra poder parar na saída
     private HotReload hotReload;
 
     @Override
-    public void start(Stage stage) {
-        INSTANCE = this;
-        MAIN_STAGE = stage;
+    public void start(Stage primaryStage) {
+        Scene scene = new Scene(ROOT, 850, 600);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Coesion Effect");
+        primaryStage.setResizable(false);
+        primaryStage.show();
 
-        loadMainView();
-        // root sempre o mesmo
-        Scene scene = new Scene(ROOT, 700, 500);
-        stage.setScene(scene);
-        stage.setTitle("JavaFX + HotReload (in-process)");
-        stage.show();
+        // Configure Exclusions (Always exclude the App entry point)
+        Set<String> exclusions = new HashSet<>();
+        //exclusions.add("my_app.App");
 
-        // *** INICIA O HOTRELOAD AQUI MESMO (NA MESMA JVM) ***
-        // paths relativos ao seu projeto; ajuste se necessário
-        hotReload = new HotReload("src/main/java/my_app", "target/classes");
+        // Initialize Hot Reload
+        hotReload = new HotReload(
+                "src/main/java",     // Path to .java files
+                "target/classes",           // Path to compiled .class files
+                "src/main/resources",       // Path to resources (css/fxml)
+                "my_app.UIReloaderImpl",    // Your Implementation Class Name
+                primaryStage,               // Context (Main Stage)
+                exclusions                  // Classes to exclude from reloading
+        );
         hotReload.start();
     }
 
-    public void loadMainView() {
-        ROOT.getChildren().setAll(new MainView());
-    }
+
 
     @Override
     public void stop() throws Exception {
